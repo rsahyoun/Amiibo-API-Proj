@@ -10,10 +10,24 @@
         <link rel="stylesheet" href="styles/layout.css">
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
+        <h1>Amiibo Info Site</h1>
+        <h2>Welcome to Ryan's Amiibo Archive </h2>
+
+        <div class="container">
+            <h1>Nintendo Amiibo Search</h1>
+            <label for="amiibo-select">Select an Amiibo:</label>
+            <select id="amiibo-select">
+                <option value="">--Select an Amiibo--</option>
+            </select>
+            <div id="amiibo-info" class="amiibo-info" style="display: none;">
+                <h2 id="amiibo-name"></h2>
+                <img id="amiibo-image" src="" alt="Amiibo Image" style="max-width: 100%;">
+                <p><strong>Series:</strong> <span id="amiibo-series"></span></p>
+                <p><strong>Game Series:</strong> <span id="amiibo-game-series"></span></p>
+                <p><strong>Type:</strong> <span id="amiibo-type"></span></p>
+            </div>
+        </div>
+    
         <script src="" async defer></script>
     </body>
 </html>
