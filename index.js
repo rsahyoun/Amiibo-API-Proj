@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 const API_URL = "https://www.amiiboapi.com/";
 
-app.use(express.statis("public"));
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {

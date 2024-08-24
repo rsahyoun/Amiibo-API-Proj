@@ -17,7 +17,10 @@
             <h1>Nintendo Amiibo Search</h1>
             <label for="amiibo-select">Select an Amiibo:</label>
             <select id="amiibo-select">
-                <option value="">--Select an Amiibo--</option>
+            <option value="">--Select an Amiibo--</option>
+            <% amiibos.forEach(function(amiibo) { %>
+                <option value="<%= amiibo.tail %>"><%= amiibo.name %></option>
+            <% }); %>
             </select>
             <div id="amiibo-info" class="amiibo-info" style="display: none;">
                 <h2 id="amiibo-name"></h2>
