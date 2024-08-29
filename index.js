@@ -20,12 +20,27 @@ app.get("/", async (req, res) => {
     }
 });
 
-app.get("/amiibo/:tail", async (req, res) => {
-    const tail = req.params.tail;
+app.get("/info", async (req, res) => {
+
+    try {
+        const response = await axios.get( API_URL + "api/amiibo");
+        const data = response.data;
+        res.render('index.ejs', { amiibos: data.amiibo });
+    } catch (error) {
+        console.error('Error fetching Amiibo data:', error);
+        res.status(500).send('Error fetching Amiibo data');
+    }
+});
+
+
+app.get("/amiibo", async (req, res) => {
+    const tail = req.query.tail;
+    console.log(`Fetching data for tail: ${tail}`);
     try {
         const response = await axios.get(API_URL + `api/amiibo/?tail=${tail}`);
         const data = response.data;
-        res.json(data);
+        console.log('Data fetched successfully:', data);
+        res.render('amiibo', { amiibo: data.amiibo[0] });
     } catch (error) {
         console.error("Error fetching Amiibo data:", error);
         res.status(500).send("Error fetching Amiibo data");

@@ -1,0 +1,26 @@
+<%- include("partials/header.ejs") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amiibo Details</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Amiibo Details</h1>
+        <div class="amiibo-info">
+            <h2><%= amiibo.name %></h2>
+            <img src="<%= amiibo.image %>" alt="Amiibo Image" style="max-width: 100%;">
+            <p><strong>Series:</strong> <%= amiibo.amiiboSeries %></p>
+            <p><strong>Game Series:</strong> <%= amiibo.gameSeries %></p>
+            <p><strong>Type:</strong> <%= amiibo.type %></p>
+        </div>
+        <a href="/">Back to Search</a>
+    </div>
+</body>
+</html>
+
+<%- include("partials/footer.ejs") %>
+
