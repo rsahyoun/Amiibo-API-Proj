@@ -1,21 +1,27 @@
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('amiiboForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent the form from submitting the traditional way
+    const filterButton = document.getElementById('filterButton');
+    const typeFilter = document.getElementById('typeFilter');
+    const amiiboSelect = document.getElementById('amiiboSelect');
 
-        // Get the selected option's value
-        const selectedValue = document.getElementById('amiiboSelect').value;
+    // Event listener for the filter button
+    filterButton.addEventListener('click', function () {
+        const selectedType = typeFilter.value;
 
-        // Ensure the selectedValue is not empty
-        if (selectedValue) {
-            // Construct the URL with the selected value as a route parameter
-            const apiUrl = `/amiibo/${encodeURIComponent(selectedValue)}`;
+        // Get all options in the amiiboSelect dropdown
+        const options = amiiboSelect.querySelectorAll('option');
 
-            // Redirect to the new URL
-            window.location.href = apiUrl;
-        } else {
-            alert("Please select an Amiibo.");
-        }
+        // Loop through the options and filter them based on the selected type
+        options.forEach(option => {
+            const amiiboType = option.getAttribute('data-type');
+
+            if (selectedType === 'all' || amiiboType === selectedType) {
+                option.style.display = ''; // Show the option
+            } else {
+                option.style.display = 'none'; // Hide the option
+            }
+        });
     });
 });
+
 
 

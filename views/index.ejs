@@ -9,10 +9,23 @@
         <div class="container">
             <h1>Nintendo Amiibo Search</h1>
             <label for="amiibo-select">Select an Amiibo:</label>
-            <form action="/amiibo" method="get">
+
+            <!-- Filter Dropdown -->
+            <label for="typeFilter">Filter by Type:</label>
+            <select id="typeFilter">
+                <option value="all">All</option>
+                <option value="figure">Figure</option>
+                <option value="card">Card</option>
+                <option value="yarn">Yarn</option>
+            
+            </select>
+            <button id="filterButton">Apply Filter</button>
+
+            <!-- Amiibo Selection DropDown-->
+            <form id="amiiboForm" action="/amiibo" method="get">
                 <select name="name" id="amiiboSelect">
                     <% amiibos.sort((a, b) => a.name.localeCompare(b.name)).forEach(function(amiibo) { %>
-                        <option value="<%= amiibo.name%>"><%= amiibo.name %></option>
+                        <option value="<%= amiibo.name %>" data-type="<%= amiibo.type %>"><%= amiibo.name %></option>
                     <% }); %>
                 </select>
                 <button type="submit">Get Amiibo Info</button>
