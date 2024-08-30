@@ -9,15 +9,18 @@
         <div class="container">
             <h1>Nintendo Amiibo Search</h1>
             <label for="amiibo-select">Select an Amiibo:</label>
-            <form id="amiibo-form" action="/amiibo" method="get">
-                <select id="amiibo-select">
-                <option value="">--Select an Amiibo--</option>
-                <% amiibos.sort((a, b) => a.name.localeCompare(b.name)).forEach(function(amiibo) { %>
-                    <option value="<%= amiibo.head %>"><%= amiibo.name %></option>
-                <% }); %>
+            <form action="/amiibo" method="get">
+                <select name="character" id="amiiboSelect">
+                    <% amiibos.sort((a, b) => a.name.localeCompare(b.name)).forEach(function(amiibo) { %>
+                        <option value="<%= amiibo.character%>"><%= amiibo.name %></option>
+                    <% }); %>
                 </select>
                 <button type="submit">Get Amiibo Info</button>
             </form>
+            
+            
+        
+            
 
             <div>
                 <form id="info-form" action="/info" method="get"></form>
@@ -25,7 +28,7 @@
             </div>
         </div>
     
-        <script src="" async defer></script>
+        <script src="/js/main.js" async defer></script>
     </body>
 </html>
 
