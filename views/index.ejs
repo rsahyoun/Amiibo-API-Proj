@@ -13,7 +13,7 @@
                 <select id="amiibo-select">
                 <option value="">--Select an Amiibo--</option>
                 <% amiibos.sort((a, b) => a.name.localeCompare(b.name)).forEach(function(amiibo) { %>
-                    <option value="<%= amiibo.tail %>"><%= amiibo.name %></option>
+                    <option value="<%= amiibo.head %>"><%= amiibo.name %></option>
                 <% }); %>
                 </select>
                 <button type="submit">Get Amiibo Info</button>
@@ -21,7 +21,7 @@
 
             <div>
                 <form id="info-form" action="/info" method="get"></form>
-                <button type="submit" id="site-info" action=""></info>
+                <button type="submit" id="site-info" action="">Page Info</button>
             </div>
         </div>
     

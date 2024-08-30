@@ -1,6 +1,7 @@
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
+import { name } from "ejs";
 
 const app = express();
 const port = 3000;
@@ -34,13 +35,17 @@ app.get("/info", async (req, res) => {
 
 
 app.get("/amiibo", async (req, res) => {
-    const tail = req.query.tail;
-    console.log(`Fetching data for tail: ${tail}`);
+    const code = req.params.character;
     try {
-        const response = await axios.get(API_URL + `api/amiibo/?tail=${tail}`);
+        const response = await axios.get(API_URL + `api/amiibo/?character=${code}`);
         const data = response.data;
         console.log('Data fetched successfully:', data);
-        res.render('amiibo', { amiibo: data.amiibo[0] });
+        res.render('amiibo.ejs',
+            {name: data.name, 
+            picture: data.image, 
+            amiiboSeries: data.amiiboSeries, 
+            gameSeries: data.gameSeries, 
+            type: data.type}); //pass the fetched data to ejs file 
     } catch (error) {
         console.error("Error fetching Amiibo data:", error);
         res.status(500).send("Error fetching Amiibo data");
