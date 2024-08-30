@@ -39,9 +39,10 @@ app.get("/info", async (req, res) => {
 
 
 app.get("/amiibo", async (req, res) => {
-    const character  = req.query.character;
+    const name  = req.query.name;
+
     try {
-        const response = await axios.get(API_URL + `api/amiibo/?character=${character }`);
+        const response = await axios.get(API_URL + `api/amiibo/?name=${name }`);
         const data = response.data.amiibo[0];
         console.log('Data fetched successfully:', data);
         res.render('amiibo.ejs',{
