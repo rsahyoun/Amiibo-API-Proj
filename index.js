@@ -15,16 +15,42 @@ app.use(express.static(path.join(__dirname, "public")))
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
-    const selectedType = req.query.typeFilter || 'all';
     try {
         const response = await axios.get( API_URL + "api/amiibo");
         const data = response.data;
-        res.render('index.ejs', { amiibos: data.amiibo, selectedType });
+        res.render('index.ejs', { amiibos: data.amiibo});
     } catch (error) {
         console.error('Error fetching Amiibo data:', error);
         res.status(500).send('Error fetching Amiibo data');
     }
 });
+
+app.get('/filter', async (req, res) => {
+    const filterType = req.query.filterType;
+    console.log(`Selected filter type: ${filterType}`);
+    let apiUrl = API_URL + 'api/amiibo';
+
+    if (filterType === 'figure') {
+        apiUrl += '?type=Figure';
+    } else if (filterType === 'card') {
+        apiUrl += '?type=Card';
+    } else if (filterType === 'yarn') {
+        apiUrl += '?type=Yarn';
+    }
+
+    console.log(`API URL: ${apiUrl}`);
+
+    try {
+        const response = await axios.get(apiUrl);
+        const data = response.data;
+        console.log('Filtered data fetched successfully:', data);
+        res.render('index.ejs', { amiibos: data.amiibo});
+    } catch (error) {
+        console.error('Error fetching filtered Amiibo data:', error);
+        res.status(500).send('Error fetching filtered Amiibo data');
+    }
+});
+
 
 app.get("/info", async (req, res) => {
 

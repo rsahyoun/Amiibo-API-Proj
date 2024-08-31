@@ -11,16 +11,15 @@
             <label for="amiibo-select">Select an Amiibo:</label>
 
             <!-- Filter Dropdown -->
-            <form id="filterForm" action="/" method="get">
-                <label for="typeFilter">Filter by Type:</label>
-                <select id="typeFilter">
-                <option value="all">All</option>
-                <option value="figure">Figure</option>
-                <option value="card">Card</option>
-                <option value="yarn">Yarn</option>
-            
-            </select>
-            <button id="filterButton">Apply Filter</button>
+            <form id="filter-form" action="/filter" method="get">
+                <label for="filter-select">Select a Filter Type:</label>
+                <select id="filter-select" name="filterType">
+                    <option value="all">All</option>
+                    <option value="figure">Figure</option>
+                    <option value="card">Card</option>
+                    <option value="yarn">Yarn</option>
+                </select>
+                <button type="submit">Apply Filter</button>
             </form>
             
 
