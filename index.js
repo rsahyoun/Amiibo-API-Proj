@@ -15,10 +15,11 @@ app.use(express.static(path.join(__dirname, "public")))
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
+    const selectedType = req.query.typeFilter || 'all';
     try {
         const response = await axios.get( API_URL + "api/amiibo");
         const data = response.data;
-        res.render('index.ejs', { amiibos: data.amiibo });
+        res.render('index.ejs', { amiibos: data.amiibo, selectedType });
     } catch (error) {
         console.error('Error fetching Amiibo data:', error);
         res.status(500).send('Error fetching Amiibo data');

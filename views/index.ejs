@@ -11,8 +11,9 @@
             <label for="amiibo-select">Select an Amiibo:</label>
 
             <!-- Filter Dropdown -->
-            <label for="typeFilter">Filter by Type:</label>
-            <select id="typeFilter">
+            <form id="filterForm" action="/" method="get">
+                <label for="typeFilter">Filter by Type:</label>
+                <select id="typeFilter">
                 <option value="all">All</option>
                 <option value="figure">Figure</option>
                 <option value="card">Card</option>
@@ -20,6 +21,8 @@
             
             </select>
             <button id="filterButton">Apply Filter</button>
+            </form>
+            
 
             <!-- Amiibo Selection DropDown-->
             <form id="amiiboForm" action="/amiibo" method="get">
@@ -41,7 +44,7 @@
             </div>
         </div>
     
-        <script src="/js/main.js" async defer></script>
+        <script src="" async defer></script>
     </body>
 </html>
 
