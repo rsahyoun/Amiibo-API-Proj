@@ -12,3 +12,59 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+
+h1 {
+    color: #007bff; /* Bootstrap primary color */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+select, button {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da; /* Light grey border */
+}
+
+select {
+    background-color: #e9ecef; /* Light grey background for dropdown */
+    color: #495057; /* Dark grey text */
+}
+
+button {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+@media (max-width: 576px) {
+    form {
+        padding: 15px;
+    }
+
+    select, button {
+        font-size: 14px;
+    }
+}
