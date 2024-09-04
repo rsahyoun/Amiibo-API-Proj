@@ -52,16 +52,8 @@ app.get('/filter', async (req, res) => {
 });
 
 
-app.get("/info", async (req, res) => {
-
-    try {
-        const response = await axios.get( API_URL + "api/amiibo");
-        const data = response.data;
-        res.render('index.ejs', { amiibos: data.amiibo });
-    } catch (error) {
-        console.error('Error fetching Amiibo data:', error);
-        res.status(500).send('Error fetching Amiibo data');
-    }
+app.get("/info", (req, res) => {
+    res.render('info.ejs');
 });
 
 
