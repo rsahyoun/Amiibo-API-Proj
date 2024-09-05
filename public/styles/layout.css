@@ -13,6 +13,16 @@ body {
     border-radius: 5px;
 }
 
+#amiibo_detail {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    background-color: #cad1da;
+    text-emphasis-color: blue;
+}
+
 
 h1 {
     color: #007bff; /* Bootstrap primary color */

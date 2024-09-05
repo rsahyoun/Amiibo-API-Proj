@@ -1,1 +1,54 @@
-<p>This is the amiibo info page </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Amiibo Database</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Include Header -->
+    <%- include("partials/header.ejs") %>
+
+    <main class="container mt-5">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Welcome to the Amiibo Database</h1>
+            <p class="lead">This site is your go-to resource for browsing and discovering information about various Amiibo characters and types.</p>
+        </div>
+
+        <section class="text-center">
+            <h2>About the Site</h2>
+            <p class="mt-4">
+                This website allows users to explore the world of Amiibos, whether you're searching for figures, cards, or other types. 
+                Use the search and filtering options to find exactly what you're looking for, and get detailed information about each Amiibo.
+            </p>
+            <p>
+                The site pulls real-time data from the Amiibo API, ensuring you have access to the most up-to-date information available.
+            </p>
+        </section>
+
+        <hr class="my-5">
+
+        <section class="text-center">
+            <h2>About the Creator</h2>
+            <p class="mt-4">
+                Hi! I'm Ryan Sahyoun, the creator of this Amiibo Database website. I built this site to help fans like myself easily access information about their favorite Amiibo characters and figures.
+            </p>
+            <p>
+                I'm passionate about web development and love combining this with my interest in gaming. My goal was to create a user-friendly experience where Amiibo fans could quickly find what they're looking for, without any hassle.
+            </p>
+            <p>
+                Feel free to explore the site, and if you have any feedback or suggestions, I would love to hear from you!
+            </p>
+        </section>
+
+        <div class="text-center mt-5">
+            <a href="/" class="btn btn-primary">Back to Home</a>
+        </div>
+    </main>
+
+    <!-- Include Footer -->
+    <%- include("partials/footer.ejs") %>
+</body>
+</html>
