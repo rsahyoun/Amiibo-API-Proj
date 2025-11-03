@@ -58,11 +58,42 @@ app.get("/info", (req, res) => {
 
 
 app.get("/amiibo", async (req, res) => {
-    const name  = req.query.name;
+    // Decode the name parameter (handles URL encoding like Bowser+Jr. -> Bowser Jr.)
+    const name = decodeURIComponent(req.query.name || '');
 
     try {
-        const response = await axios.get(API_URL + `api/amiibo/?name=${name }`);
-        const data = response.data.amiibo[0];
+        // Encode the name for the API call
+        const encodedName = encodeURIComponent(name);
+        const response = await axios.get(API_URL + `api/amiibo/?name=${encodedName}`);
+        const results = response.data.amiibo;
+
+        if(!results || results.length === 0) 
+        {
+            return res.status(404).send('Amiibo not found');
+        }
+
+        // First, try to find exact name match (handles specific searches like "Bowser Jr. - Horse Racing")
+        let data = results.find(amiibo => amiibo.name === name);
+
+        // If no exact match and the search doesn't contain " - ", prioritize Figure type
+        // (for general searches like "Bowser Jr." - we want the actual amiibo figure, not cards)
+        if(!data && !name.includes(' - '))
+        {
+            data = results.find(amiibo => amiibo.type === 'Figure');
+        }
+
+        // If still no match, try to find one without a dash (non-game variant)
+        if(!data)
+        {
+            data = results.find(amiibo => !amiibo.name.includes(' - '));
+        }
+
+        // Fallback to first result if nothing else matches
+        if(!data)
+        {
+            data = results[0];
+        }
+
         console.log('Data fetched successfully:', data);
         res.render('amiibo.ejs',{
             name: data.name, 
