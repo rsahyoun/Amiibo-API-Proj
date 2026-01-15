@@ -6,6 +6,9 @@ import { fileURLToPath } from "url";
 
 const app = express();
 const port = process.env.PORT || 3000;
+// Original API has been archived as of December 2025 so the current API is now dead
+// and is not maintained anymore, a new solution is needed in order to pull the data.
+// Either host the API on my own device try and find a fork or new API
 const API_URL = "https://www.amiiboapi.com/";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -117,4 +120,5 @@ app.get("/amiibo", async (req, res) => {
 
 app.listen(port, () => {
     console.log(`Sever is running on port ${port}`);
+
 })
